@@ -1,0 +1,27 @@
+<div class="dialog-wrapper">
+  <div class="dialog-header">
+    <div class="title">
+      Add new cover
+    </div>
+    <div class="flex1"></div>
+    <a mat-dialog-close class="close-dialog" (click)="dialogRef.close('no')">
+      <i class="material-icons">&#xE14C;</i>
+    </a>
+  </div>
+  <div class="dialog-content">
+    <div class="form-wrapper">
+      <div class="ui form">
+          <input type="file" (change)="uploadFile($event)" />
+          <div>{{ uploadPercent | async }}</div>
+          <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-footer">
+    <div class="flex1"></div>
+    <a mat-dialog-close class="enbutton cancel m-r16" (click)="dialogRef.close('no')">Cancel</a>
+    <button type="submit" class="enbutton primary m-r16" [disabled]="store?.process"
+      (click)="update()">Update</button>
+  </div>
+  <app-spinner *ngIf="store?.process"></app-spinner>
+</div>

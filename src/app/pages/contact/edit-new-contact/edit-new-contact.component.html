@@ -1,0 +1,68 @@
+<form [formGroup]="form" class="dialog-wrapper">
+  <div class="dialog-header">
+    <div class="title">
+      Edit Contact
+    </div>
+    <div class="flex1"></div>
+    <a mat-dialog-close class="close-dialog" (click)="dialogRef.close('no')">
+      <i class="material-icons">&#xE14C;</i>
+    </a>
+  </div>
+
+  <div class="dialog-content">
+    <div class="form-wrapper">
+      <div class="ui form">
+        <div class="field">
+          <label>Contact's name
+            <span class="rq-sign">*</span>
+          </label>
+          <input type="text" #focusInput placeholder="Enter  name" required formControlName="name">
+          <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['name'].hasError('nameAvailable')" class="error-message">This name is taken. Try
+            another.</div>
+        </div>
+      </div>
+
+
+      <div class="ui form">
+        <div class="field">
+          <label>Phone number
+            <span class="rq-sign">*</span>
+          </label>
+          <input type="text" #focusInput placeholder="Enter  phone" required formControlName="phone">
+          <div *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['phone'].hasError('nameAvailable')" class="error-message">This mission is taken. Try
+            another.</div>
+        </div>
+      </div>
+
+      <div class="ui form">
+        <div class="field">
+          <label>Email adress
+            <span class="rq-sign">*</span>
+          </label>
+          <input type="text" #focusInput placeholder="Enter  email" required formControlName="email">
+          <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['email'].hasError('nameAvailable')" class="error-message">This value is taken. Try
+            another.</div>
+        </div>
+      </div>
+
+     
+
+     
+    </div>
+
+  </div>
+  <div class="dialog-footer">
+    <div class="flex1"></div>
+    <a mat-dialog-close class="enbutton cancel m-r16" (click)="dialogRef.close('no')">Cancel</a>
+    
+    <button class="enbutton primary m-r16" [disabled]="!form.valid || store?.process"
+      (click)="create(form.value,false)">Update</button>
+  </div>
+  <app-spinner *ngIf="store?.process"></app-spinner>
+</form>

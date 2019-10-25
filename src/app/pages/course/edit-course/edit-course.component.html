@@ -1,0 +1,75 @@
+<form [formGroup]="form" class="dialog-wrapper">
+  <div class="dialog-header">
+    <div class="title">
+      Edit course
+    </div>
+    <div class="flex1"></div>
+    <a mat-dialog-close class="close-dialog" (click)="dialogRef.close('no')">
+      <i class="material-icons">&#xE14C;</i>
+    </a>
+  </div>
+
+  <div class="dialog-content">
+    <div class="form-wrapper">
+      <div class="ui form">
+        <div class="field">
+          <label>Name
+            <span class="rq-sign">*</span>
+          </label>
+          <input type="text" #focusInput placeholder="Enter name" required formControlName="name">
+          <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['name'].hasError('nameAvailable')" class="error-message">This name is taken. Try
+            another.</div>
+        </div>
+        <div class="field">
+          <label>Order
+            <span class="rq-sign">*</span>
+          </label>
+          <input type="number" placeholder="Order number slide" required formControlName="order">
+          <div *ngIf="form.controls['order'].hasError('required') && form.controls['order'].touched"
+            class="error-message">This field is required.</div>
+        </div>
+        <div class="field">
+          <label>Description
+            <span class="rq-sign">*</span>
+          </label>
+          <textarea formControlName="description" placeholder="description"></textarea>
+          <div *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched"
+            class="error-message">This field is required.</div>
+        </div>
+        <div class="field">
+          <label>Category
+            <span class="rq-sign">*</span>
+          </label>
+          <mat-select [compareWith]="compareObjects" formControlName="category">
+            <mat-option *ngFor="let item of category_lists" [value]="item">
+              {{item?.name}}
+            </mat-option>
+          </mat-select>
+          <div class="field">
+            <label>Payment option <span class="rq-sign">*</span></label>
+            <mat-selection-list class="mat-book" #tags formControlName="paymentType">
+              <mat-list-option *ngFor="let item of paymentData" [value]="item">
+                {{item?.text}}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+          <div *ngIf="form.controls['category'].hasError('required') && form.controls['category'].touched"
+            class="error-message">
+            This field is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-footer">
+    <div class="flex1"></div>
+    <a mat-dialog-close class="enbutton cancel m-r16" (click)="dialogRef.close('no')">Cancel</a>
+
+    <button class="enbutton primary m-r16" [disabled]="!form.valid || store?.process"
+      (click)="create(form.value,false)">Update</button>
+  </div>
+  <app-spinner *ngIf="store?.process"></app-spinner>
+</form>

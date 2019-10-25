@@ -1,0 +1,76 @@
+<form [formGroup]="form" class="dialog-wrapper">
+  <div class="dialog-header">
+    <div class="title">
+      Add new about
+    </div>
+    <div class="flex1"></div>
+    <a mat-dialog-close class="close-dialog" (click)="dialogRef.close('no')">
+      <i class="material-icons">&#xE14C;</i>
+    </a>
+  </div>
+
+  <div class="dialog-content">
+    <div class="form-wrapper">
+      <div class="ui form">
+        <div class="field">
+          <label>Our Vision
+            <span class="rq-sign">*</span>
+          </label>
+          <!-- <input type="text" #focusInput placeholder="Enter  name" required formControlName="name"> -->
+          <textarea formControlName="name" placeholder="name"></textarea>
+
+          <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['name'].hasError('nameAvailable')" class="error-message">This name is taken. Try
+            another.</div>
+        </div>
+      </div>
+
+
+      <div class="ui form">
+        <div class="field">
+          <label>Our Mission
+            <span class="rq-sign">*</span>
+          </label>
+          <!-- <input type="text" #focusInput placeholder="Enter  mission" required formControlName="mission"> -->
+          <textarea formControlName="mission" placeholder="mission"></textarea>
+
+          <div *ngIf="form.controls['mission'].hasError('required') && form.controls['mission'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['mission'].hasError('nameAvailable')" class="error-message">This mission is taken.
+            Try
+            another.</div>
+        </div>
+      </div>
+
+      <div class="ui form">
+        <div class="field">
+          <label>Core Values
+            <span class="rq-sign">*</span>
+          </label>
+          <!-- <input type="text" #focusInput placeholder="Enter  name" required formControlName="value"> -->
+          <textarea formControlName="value" placeholder="value"></textarea>
+
+          <div *ngIf="form.controls['value'].hasError('required') && form.controls['name'].touched"
+            class="error-message">This field is required.</div>
+          <div *ngIf="form.controls['value'].hasError('nameAvailable')" class="error-message">This value is taken. Try
+            another.</div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+  <div class="dialog-footer">
+    <div class="flex1"></div>
+    <a mat-dialog-close class="enbutton cancel m-r16" (click)="dialogRef.close('no')">Cancel</a>
+    <button type="submit" class="enbutton primary m-r16" [disabled]="!form.valid || store?.process"
+      (click)="create(form.value,true)">Save New</button>
+    <button class="enbutton primary m-r16" [disabled]="!form.valid || store?.process"
+      (click)="create(form.value,false)">Save Close</button>
+  </div>
+  <app-spinner *ngIf="store?.process"></app-spinner>
+</form>

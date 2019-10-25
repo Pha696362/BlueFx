@@ -1,0 +1,114 @@
+<ng-container *mobxAutorun>
+  <div class="page-section">
+    <div class="action-bar">
+      <div class="nav-content">
+        <h3 class="head-title">Videos</h3>
+        <div class="flex1"></div>
+        <div class="action-list-item">
+          <div class="action-item">
+            <button mat-button (click)="create()" class="enbutton primary">Add new videos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let link of tabs" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">{{link.label}}</a>
+    </nav>
+    <ng-container *ngIf="!store?.loading">
+      <div class="card-wrapper tab" *ngIf="!store?.empty">
+        <div class="tb-content">
+          <div class="card-header">
+            <div class="card-item">
+              <div class="card-col5">
+                <div class="flex-block">
+                  No
+                </div>
+              </div>
+              <div class="card-col45">
+                <div class="flex-block">
+                  Name
+                </div>
+              </div>
+              <div class="card-col20">
+                <div class="flex-block">
+                  Modified By
+                </div>
+              </div>
+              <div class="card-col20">
+                <div class="flex-block">
+                  Date Modified
+                </div>
+              </div>
+              <div class="card-col10"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <ng-container *ngFor="let item of store?.data ;let i=index">
+              <div class="card-item">
+                <div class="card-col5">
+                  <div class="flex-block">
+                    <span>{{i+1}}</span>
+                  </div>
+                </div>
+                <div class="card-col45">
+                  <div class="flex-block">
+                      <img *ngIf="item?.fileUrl" [src]="item?.fileUrl" />
+                      <strong (click)="cover(item)">{{item?.name}}</strong>
+                  </div>
+                </div>
+                <div class="card-col20">
+                  <div class="flex-block ">
+                    {{item?.update_by?.name}}
+                  </div>
+                </div>
+                <div class="card-col20">
+                  <div class="flex-block">
+                    {{item?.create_date?.toDate() | date:'short'}}
+                  </div>
+                </div>
+                <div class="card-col10">
+                  <div class="card-list-action">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <i class="material-icons">more_vert</i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <!-- <button mat-menu-item (click)="cover(item)">
+                        <mat-icon>insert_photo</mat-icon>
+                        <span>Cover</span>
+                      </button> -->
+                      <button mat-menu-item (click)="edit(item)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                      </button>
+                      <button mat-menu-item (click)="delete(item)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="empty-block" *ngIf="store?.empty">
+        <div class="center-block-empty">
+          <div class="empty-img">
+            <img src="https://mobilecenter.azureedge.net/generated/img/no-apps-db6363dd644196e2291b243bc210e1b0.svg"
+              alt="empty">
+          </div>
+          <div class="empty-text">
+            <p class="empty-state-title">No Videos</p>
+            <p class="empty-state-desc">
+              You don't have any videos yet. Please create videosfor apply videos in course.
+            </p>
+            <button mat-button class="add-button" (click)="create()">Add new videos</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <app-spinner *ngIf="store?.loading"></app-spinner>
+</ng-container>

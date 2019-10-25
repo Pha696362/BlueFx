@@ -1,5 +1,5 @@
 import { ConvertService, toNearExpiredDate } from './convert.service';
-import { ITag, IGenre, ISlide, IBook } from './../interfaces/bookstore';
+import { ITag, IGenre, ISlide, IBook, ICategory, ICourse, IAbout, IContact, ITypes, IContent } from './../interfaces/bookstore';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
 import { IProduct, ISubscriber } from '../interfaces/subscriber';
@@ -33,6 +33,34 @@ export class DataService {
   tagRef() {
     return this.db.collection<ITag>("tags", ref => ref.orderBy("name"));
   }
+  
+
+  aboutRef() {
+    return this.db.collection<IAbout>("about", ref => ref.orderBy("name"));
+  }
+  contactRef() {
+    return this.db.collection<IContact>("contact", ref => ref.orderBy("name"));
+  }
+
+  categoryRef() {
+    return this.db.collection<ICategory>("category", ref => ref.orderBy("name"));
+  }
+
+  courseRef() {
+    return this.db.collection<ICourse>("courses", ref => ref.orderBy("name"));
+  }
+  courseDocRef(doc) {
+    return this.db.collection<ICourse>("courses", ref => ref.orderBy("name")).doc(doc);
+  }
+
+  videoRef(coursekey) {
+    return this.db.collection("videos", ref => ref.where('course.key', '==', coursekey));
+  }
+
+  videocRef() {
+    return this.db.collection("videos");
+  }
+
 
   tagValidRef(keyword: string) {
     return this.db.collection<ITag>("tags", ref => ref.where("name", "==", keyword));
@@ -66,6 +94,10 @@ export class DataService {
           .where("isPaid", "==", false)
           .where("product.period", ">", 0)
           .orderBy("product.period")
+          .orderBy("page_key"));
+      case 'pending':
+        return this.db.collection<ISubscriber>("subscribers", ref => ref
+          .where("status.key", "==", 2)
           .orderBy("page_key"));
       case 'membership':
         return this.db.collection<ISubscriber>("subscribers", ref => ref
@@ -163,5 +195,11 @@ export class DataService {
     return this.db.createId();
   }
 
+  typenewsRef() {
+    return this.db.collection<ITypes>("types", ref => ref.orderBy("name"));
+  }
+  contentRef() {
+    return this.db.collection<IContent>("content", ref => ref.orderBy("name"));
+  }
 
 }

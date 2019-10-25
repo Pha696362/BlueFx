@@ -16,6 +16,7 @@ export class AddCoverSlideComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   fileName: string;
+  
 
   constructor(
     public dialogRef: MatDialogRef<AddCoverSlideComponent>,

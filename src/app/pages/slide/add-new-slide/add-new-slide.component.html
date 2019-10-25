@@ -32,8 +32,20 @@
         <div class="field">
           <label>Description
           </label>
-          <input type="text" placeholder="Remark" formControlName="description">
+          <textarea formControlName="description" placeholder="description"></textarea>
         </div>
+
+        <!-- <div class="field">
+          <label>Images
+          </label>
+          <input type="file" (change)="uploadFile($event)" />
+          <div>{{ uploadPercent | async }}</div>
+          <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+        </div> -->
+
+        
+       
+         
       </div>
     </div>
 

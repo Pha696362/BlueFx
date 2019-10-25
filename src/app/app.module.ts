@@ -18,7 +18,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -121,9 +120,34 @@ import { EditProductComponent } from './pages/product/edit-product/edit-product.
 import { AddCoverProductComponent } from './pages/product/add-cover-product/add-cover-product.component';
 import { EditSubscribersComponent } from './pages/subscribers/edit-subscribers/edit-subscribers.component';
 import { AddCoverSubscribersComponent } from './pages/subscribers/add-cover-subscribers/add-cover-subscribers.component';
+import { CourseComponent } from './pages/course/course.component';
+import { AddNewCourseComponent } from './pages/course/add-new-course/add-new-course.component';
+import { EditCourseComponent } from './pages/course/edit-course/edit-course.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { AddCategoryComponent } from './pages/category/add-category/add-category.component';
+import { EditCategoryComponent } from './pages/category/edit-category/edit-category.component';
+import { AddConverCategoryComponent } from './pages/category/add-conver-category/add-conver-category.component';
+import { AddNewCourseCoverComponent } from './pages/course/add-new-course-cover/add-new-course-cover.component';
+import { CourseDetailComponent } from './pages/course/course-detail/course-detail.component';
+import { AddNewVideosComponent } from './pages/course/add-new-videos/add-new-videos.component';
+import { EditVideosComponent } from './pages/course/edit-videos/edit-videos.component';
+import { AddAboutUsComponent } from './pages/about/add-about-us/add-about-us.component';
+import { AboutComponent } from './pages/about/about.component';
+import { EditAboutUsComponent } from './pages/about/edit-about-us/edit-about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AddNewContactComponent } from './pages/contact/add-new-contact/add-new-contact.component';
+import { EditNewContactComponent } from './pages/contact/edit-new-contact/edit-new-contact.component';
+import { ContentComponent } from './pages/content/content.component';
+import { TypesNewsComponent } from './pages/types-news/types-news.component';
+import { AddTypeNewsComponent } from './pages/types-news/add-type-news/add-type-news.component';
+import { AddNewContentComponent } from './pages/content/add-new-content/add-new-content.component';
+
+
+
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     DashboardComponent,
     HomeComponent,
@@ -208,8 +232,33 @@ import { AddCoverSubscribersComponent } from './pages/subscribers/add-cover-subs
     AddCoverProductComponent,
     EditSubscribersComponent,
     AddCoverSubscribersComponent,
+    CourseComponent,
+    EditCourseComponent,
+    AddNewCourseComponent,
+    CategoryComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    AddConverCategoryComponent,
+    AddNewCourseCoverComponent,
+    CourseDetailComponent,
+    AddNewVideosComponent,
+    EditVideosComponent,
+    AddAboutUsComponent,
+    AboutComponent,
+    EditAboutUsComponent,
+    ContactComponent,
+    AddNewContactComponent,
+    EditNewContactComponent,
+    ContentComponent,
+    TypesNewsComponent,
+    AddTypeNewsComponent,
+    AddNewContentComponent,
+
+
   ],
   entryComponents: [
+    AddNewCourseCoverComponent,
+    AddNewContactComponent,
     ModalWarningComponent,
     DeleteComponent,
     ConfirmSuccessComponent,
@@ -217,6 +266,20 @@ import { AddCoverSubscribersComponent } from './pages/subscribers/add-cover-subs
     ForgotPasswordComponent,
     APP_ENTRY_COMPONENTS,
     AddAccountUserComponent,
+    EditCourseComponent,
+    AddNewCourseComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    AddConverCategoryComponent,
+    AddNewVideosComponent,
+    EditVideosComponent,
+    AddAboutUsComponent,
+    EditAboutUsComponent,
+    EditNewContactComponent,
+    AddTypeNewsComponent,
+    AddNewContentComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -231,7 +294,7 @@ import { AddCoverSubscribersComponent } from './pages/subscribers/add-cover-subs
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'PUC-CLOUD'),
     AgmCoreModule.forRoot({
-      apiKey: environment.mapKey
+    apiKey: environment.mapKey
     }),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -252,6 +315,7 @@ import { AddCoverSubscribersComponent } from './pages/subscribers/add-cover-subs
     PrintService,
     UploadService,
     ApiService,
+   
   ],
   bootstrap: [AppComponent]
 })

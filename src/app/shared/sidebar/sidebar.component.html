@@ -4,8 +4,9 @@
             <img [src]="logo" alt="PHSAR TECH">
         </div>
         <div class="sbar-brand-name">
-            NerkNoval
+            BlueFx
         </div>
+
     </div>
     <div class="sidebar-header">
         <div class="header-content">
@@ -15,7 +16,7 @@
                     <i class="material-icons">&#xE88A;</i>
                 </div>
                 <div class="item-name">
-                    Billing Overview
+                    BlueFx Overview
                 </div>
             </div>
             <div class="sitting" [matMenuTriggerFor]="menusitting">
@@ -45,85 +46,48 @@
                 <mat-expansion-panel-header expandedHeight="58px" collapsedHeight="78px"
                     [class.active]="expansions?.scholarship">
                     <mat-panel-title>
-                        Billing
+                        Information
                     </mat-panel-title>
-                    <mat-panel-description *ngIf="!expansions?.scholarship">Subscribers
+                    
+                    <mat-panel-description *ngIf="!expansions?.scholarship">About Us, Contact
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div class="list-content">
                     <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/subscribers']">
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/about']">
                             <div class="icon">
-                                <i class="material-icons">subscriptions</i>
+                                <i class="material-icons">slideshow</i>
                             </div>
                             <div class="item-name">
-                                Subscribers
+                                About Us
                             </div>
                         </div>
                     </div>
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/packages']">
+                     <div class="list-item"> 
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/contact']">
                             <div class="icon">
-                                <i class="material-icons">card_giftcard</i>
+                                <i class="material-icons">perm_contact_calendar</i>
                             </div>
                             <div class="item-name">
-                                Packages
+                                Contact Us
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="list-item">
-                                <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/slides']">
-                                    <div class="icon">
-                                        <i class="material-icons">slideshow</i>
-                                    </div>
-                                    <div class="item-name">
-                                        Slides
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/genres']">
-                                    <div class="icon">
-                                        <i class="material-icons">supervised_user_circle</i>
-                                    </div>
-                                    <div class="item-name">
-                                        Genres
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/tags']">
-                                    <div class="icon">
-                                        <i class="material-icons">visibility</i>
-                                    </div>
-                                    <div class="item-name">
-                                        Tags
-                                    </div>
-                                </div>
-                            </div> -->
-
+                        
                 </div>
             </mat-expansion-panel>
             <mat-expansion-panel [expanded]="expansions.apo" (closed)="onClosed(3)" (opened)="onOpened(3)">
                 <mat-expansion-panel-header expandedHeight="58px" collapsedHeight="78px"
                     [class.active]="expansions?.apo">
                     <mat-panel-title>
-                        Bookstore
+                        <!-- ឈ្មោះនៃប្រភេទព័ត៌មាន -->
+                        Category
                     </mat-panel-title>
-                    <mat-panel-description *ngIf="!expansions?.apo">Store, Books, Slides, Genres and Tags
+                    <mat-panel-description *ngIf="!expansions?.apo">Slide, Category,
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div class="list-content">
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/books']">
-                            <div class="icon">
-                                <i class="material-icons">local_library</i>
-                            </div>
-                            <div class="item-name">
-                                Books
-                            </div>
-                        </div>
-                    </div>
+                  
                     <div class="list-item">
                         <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/slides']">
                             <div class="icon">
@@ -134,94 +98,79 @@
                             </div>
                         </div>
                     </div>
+                  
                     <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/genres']">
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/category']">
                             <div class="icon">
-                                <i class="material-icons">supervised_user_circle</i>
+                                <i class="material-icons">category</i>
                             </div>
                             <div class="item-name">
-                                Genres
+                                Category
                             </div>
                         </div>
                     </div>
+                    
                     <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/tags']">
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/course']">
                             <div class="icon">
-                                <i class="material-icons">visibility</i>
+                                <i class="material-icons">book</i>
                             </div>
                             <div class="item-name">
-                                Tags
+                                Course
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="list-item">
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/types']">
+                            <div class="icon">
+                                <i class="material-icons">info</i>
+                            </div>
+                            <div class="item-name">
+                                Type of News
+                            </div>
+                        </div>
+                    </div> -->
 
                 </div>
             </mat-expansion-panel>
 
-            <!-- <mat-expansion-panel [expanded]="expansions.hr" (closed)="onClosed(7)" (opened)="onOpened(7)">
+             <mat-expansion-panel [expanded]="expansions.hr" (closed)="onClosed(7)" (opened)="onOpened(7)">
                 <mat-expansion-panel-header expandedHeight="58px" collapsedHeight="78px"
                     [class.active]="expansions?.hr">
                     <mat-panel-title>
-                        Reports
+                        <!-- គ្រប់គ្រងអត្ថបទ -->
+                        Payment
                     </mat-panel-title>
-                    <mat-panel-description *ngIf="!expansions?.hr">Store, Books, Slides, Genres and Tags
+                    <mat-panel-description *ngIf="!expansions?.hr">Payment,
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div class="list-content">
                     <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/store']">
+                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/subscribers']">
                             <div class="icon">
-                                <i class="material-icons">shopping_basket</i>
+                                <i class="material-icons">subscribers</i>
                             </div>
                             <div class="item-name">
-                                App
+                            Subscriber
                             </div>
                         </div>
                     </div>
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/books']">
+                    
+                     <div class="list-item"> 
+                      <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/packages']">
                             <div class="icon">
-                                <i class="material-icons">local_library</i>
+                                <i class="material-icons">card_giftcard</i>
                             </div>
                             <div class="item-name">
-                                Books
+                                Packages
                             </div>
-                        </div>
-                    </div>
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/slides']">
-                            <div class="icon">
-                                <i class="material-icons">slideshow</i>
-                            </div>
-                            <div class="item-name">
-                                Slides
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/genres']">
-                            <div class="icon">
-                                <i class="material-icons">supervised_user_circle</i>
-                            </div>
-                            <div class="item-name">
-                                Genres
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-item">
-                        <div class="list-item-row" routerLinkActive="active" [routerLink]="['/app/tags']">
-                            <div class="icon">
-                                <i class="material-icons">visibility</i>
-                            </div>
-                            <div class="item-name">
-                                Tags
-                            </div>
-                        </div>
+                        </div> 
                     </div>
 
+
                 </div>
-            </mat-expansion-panel>
-             -->
+            </mat-expansion-panel> 
+            
         </mat-accordion>
     </div>
     <div class="sidebar-footer">

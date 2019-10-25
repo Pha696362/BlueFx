@@ -47,6 +47,7 @@ export class AddNewSlideComponent implements OnInit {
   }
 
   create(f: any, isNew) {
+    console.log(f);
     if (this.form.valid) {
       this.form.disable();
       const { name, order, description } = f;

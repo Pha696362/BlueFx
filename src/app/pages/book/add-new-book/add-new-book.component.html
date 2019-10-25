@@ -1,7 +1,7 @@
 <form [formGroup]="form" class="dialog-wrapper">
   <div class="dialog-header">
     <div class="title">
-      Add new book
+      Add new Categories
     </div>
     <div class="flex1"></div>
     <a mat-dialog-close class="close-dialog" (click)="dialogRef.close('no')">
@@ -91,7 +91,7 @@
                 {{item?.text}}
               </mat-list-option>
             </mat-selection-list>
-          </div>
+        </div>
         <div class="field">
           <label>Description <span class="rq-sign">*</span></label>
           <textarea formControlName="description" placeholder="Book description"></textarea>

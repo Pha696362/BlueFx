@@ -20,6 +20,15 @@ import { ProductComponent } from './pages/product/product.component';
 import { ClientProfileComponent } from './pages/client-profile/client-profile.component';
 import { ClientOverviewComponent } from './pages/client-profile/client-overview/client-overview.component';
 import { ClientPaymentComponent } from './pages/client-profile/client-payment/client-payment.component';
+import { CourseComponent } from './pages/course/course.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CourseDetailComponent } from './pages/course/course-detail/course-detail.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ContentComponent } from './pages/content/content.component';
+import { TypesNewsComponent } from './pages/types-news/types-news.component';
+
+
 const routes: Routes = [
   {
     path: "auth",
@@ -83,11 +92,44 @@ const routes: Routes = [
         ]
       },
       {
+        path: "course",
+        component: TabLayoutComponent,
+        children: [
+          { path: "", redirectTo: "data", pathMatch: "full" },
+          { path: "data", component: CourseComponent },
+          { path: ":id", component: CourseDetailComponent },
+        ]
+      },
+      {
+        path: "category",
+        component: TabLayoutComponent,
+        children: [
+          { path: "", redirectTo: "data", pathMatch: "full" },
+          { path: "data", component: CategoryComponent },
+        ]
+      },
+      {
         path: "slides",
         component: TabLayoutComponent,
         children: [
           { path: "", redirectTo: "data", pathMatch: "full" },
           { path: "data", component: SlideComponent },
+        ]
+      },
+      {
+        path: "about",
+        component: TabLayoutComponent,
+        children: [
+          { path: "", redirectTo: "data", pathMatch: "full" },
+          { path: "data", component: AboutComponent},
+        ]
+      },
+      {
+        path: "contact",
+        component: TabLayoutComponent,
+        children: [
+          { path: "", redirectTo: "data", pathMatch: "full" },
+          { path: "data", component: ContactComponent},
         ]
       },
       {
@@ -122,13 +164,33 @@ const routes: Routes = [
           { path: "all", component: AccountUsersComponent },
         ]
       },
+// news post
+{
+  path: "types",
+  component: TabLayoutComponent,
+  children: [
+    { path: "", redirectTo: "data", pathMatch: "full" },
+    { path: ":id", component: TypesNewsComponent },
+  ]
+},
+      {
+        path: "content",
+        component: TabLayoutComponent,
+        children: [
+          { path: "", redirectTo: "data", pathMatch: "full" },
+          { path: ":id", component: ContentComponent },
+        ]
+      },
     ]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  providers: [AuthGuard],
+
+
+
+providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

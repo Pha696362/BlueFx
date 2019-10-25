@@ -42,16 +42,16 @@ export class AddSubscriberComponent implements OnInit {
       phone: [null, Validators.compose([Validators.required]), checkExistDoc(this.afs, "subscribers", "phoneNumber")],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-      // product: [null,],
+       product: [null,],
       email: [null],
     })
     this.phone = this.form.controls['phone'];
     this.firstName = this.form.controls["period"];
     this.lastName = this.form.controls["lastName"];
-    // this.product = this.form.controls["product"];
+     this.product = this.form.controls["product"];
     this.email = this.form.controls["email"];
-    // this.products = await this.store.fetchPackage();
-    // this.product.patchValue(this.products[0])
+    this.products = await this.store.fetchPackage();
+    this.product.patchValue(this.products[0])
   }
 
 

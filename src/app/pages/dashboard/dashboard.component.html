@@ -2,7 +2,7 @@
   <div class="task-wrapper chapternav">
     <mat-progress-bar *ngIf="store?.loading" class="top-nav-progress" mode="indeterminate"></mat-progress-bar>
     <div class="search-engine">
-      <h2>NerkNovel Billing System</h2>
+      <h2>BlueFx System</h2>
       <form [formGroup]="form" class="search-nav" [ngClass]="{ active: formFocus }">
         <div class="enroll-filter">
           <mat-select (selectionChange)="_selectionChange($event)" formControlName="searchType"
@@ -58,18 +58,18 @@
         <h2 class="task-title">Packages</h2>
       </div>
 
-      <div class="task-item ani-col" [routerLink]="['/app/books']">
+      <div class="task-item ani-col" [routerLink]="['/app/about']">
         <div class="task-icon task-icon1 purple">
           <i class="material-icons">local_library</i>
         </div>
-        <h2 class="task-title">Books</h2>
+        <h2 class="task-title">About</h2>
       </div>
 
-      <div class="task-item ani-col" [routerLink]="['/app/reports']">
+      <div class="task-item ani-col" [routerLink]="['/app/category']">
         <div class="task-icon task-icon1 green">
-          <i class="material-icons">print</i>
+          <i class="material-icons">category</i>
         </div>
-        <h2 class="task-title">Reports</h2>
+        <h2 class="task-title">Category</h2>
       </div>
 
       <div class="task-item ani-col" [routerLink]="['/app']">

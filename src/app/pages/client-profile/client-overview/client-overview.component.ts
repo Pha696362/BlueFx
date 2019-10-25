@@ -25,6 +25,8 @@ export class ClientOverviewComponent implements OnInit {
 
   async ngOnInit() {
     this.packages = await this.store.fetchPackage();
+    // this.packages = await this.store.fetchSubscriber();
+    
     
     this.store.subscriberKey = null;
     this.route.parent.params.forEach(params => {

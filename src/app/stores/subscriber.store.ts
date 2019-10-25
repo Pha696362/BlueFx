@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import { pushToArray } from '../services/utils.lib';
 import { ConvertService } from '../services/convert.service';
 import { IInvoice } from 'src/app/interfaces/invoice';
-import { PAY_STATUS } from '../dummy/status';
+import { PAY_STATUS, statusObj } from '../dummy/status';
 
 @Injectable()
 export class Subscriber {
@@ -271,6 +271,7 @@ export class Subscriber {
           isPaid: true,
           expiredDate: expiredDate,
           expiredDateKey: ConvertService.toDateKey(expiredDate),
+          status: statusObj.subscribed,
         });
 
         batch.commit().then(() => {

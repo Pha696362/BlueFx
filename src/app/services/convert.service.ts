@@ -2,7 +2,6 @@ import { months } from './../dummy/report';
 import { AbstractControl } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { toNumber } from 'functions/src/mapping';
 
 @Injectable({
   providedIn: 'root'
@@ -365,8 +364,8 @@ export function toClassDate(date:Date){
     day:moment(date).format("DD"),
     month:moment(date).format("MM"),
     year:moment(date).format("YYYY"),
-    hour:toNumber(moment(date).format("hh")),
-    minute:toNumber(moment(date).format("mm"))
+    hour:this.toNumber(moment(date).format("hh")),
+    minute:this.toNumber(moment(date).format("mm"))
   }
 }
 

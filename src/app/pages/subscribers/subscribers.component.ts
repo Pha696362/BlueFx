@@ -71,7 +71,7 @@ export class SubscribersComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'yes') {
-        this.store.delete(this.ds.slideRef(), item, (success, error) => {
+        this.store.delete(this.ds.subscriberRef(), item, (success, error) => {
           if (success) {
             this.snackBar.open('Genre has been deleted.', 'done', { duration: 2000 });
           }
