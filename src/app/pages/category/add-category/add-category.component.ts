@@ -43,16 +43,17 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    console.log(this.env.user)
   }
 
   create(f: any, isNew) {
     if (this.form.valid) {
       this.form.disable();
-      const {name,description}=f;
+      const {name}=f;
       const item: ICategory = {
         key: this.ds.createId(),
         name: name,
-        // description:description,
+
         status: StatusObj.ACTIVE,
         create_date: new Date(),
         create_by: this.env.user,

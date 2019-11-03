@@ -46,15 +46,15 @@
           <div class="card-content">
             <ng-container *ngFor="let item of store?.data ;let i=index">
               <div class="card-item"  >
-                <div class="card-col5"[routerLink]="['/app/course/' + item?.key]" >
+                <div class="card-col5">
                   <div class="flex-block">
                     <span>{{i+1}}</span>
                   </div>
                 </div>
                 <div class="card-col45">
-                  <div class="flex-block">
+                  <div class="flex-block link">
                       <img *ngIf="item?.fileUrl" [src]="item?.fileUrl" />
-                      <strong (click)="cover(item)">{{item?.name}}</strong>
+                      <strong [routerLink]="['/app/course/' + item?.key]" >{{item?.name}}</strong>
                   </div>
                 </div>
                 <div class="card-col20">

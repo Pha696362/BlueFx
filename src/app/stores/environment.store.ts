@@ -58,11 +58,11 @@ export class Environment {
   fetchUser(key) {
     this.loading = true;
     this.ds.userRef().doc<any>(key).valueChanges().subscribe(doc => {
-      if(doc){
-        const { role, province } = doc;
+      if (doc) {
+        // const { role, province } = doc;
         this.user = doc;
-        this.province = province;
-        this.role = role;
+        // this.province = province;
+        // this.role = role;
       }
       this.loading = false;
     });
@@ -82,7 +82,7 @@ export class Environment {
 
         const { uid } = user;
         this.ds.userRef().doc<any>(uid).valueChanges().subscribe(doc => {
-          const { role, province } = doc;
+           const { role, province } = doc;
           this.user = doc;
           this.province = province;
           this.role = role;
@@ -98,13 +98,20 @@ export class Environment {
     this.loading = true;
     this.auth.canActiveRef().subscribe(user => {
       if (user) {
-        this.user = {
-          key: user.uid,
-          name: user.displayName?user.displayName:"Unknown",
-          email: user.email,
-        }
+        // this.user = {
+        //   key: user.uid,
+        //   name: user.displayName?user.displayName:"Unknown",
+        //   email: user.email,
+        // }
+        const { uid } = user;
+        this.ds.userRef().doc<any>(uid).valueChanges().subscribe(doc => {
+          // const { role, province } = doc;
+          this.user = doc;
+          // this.province = province;
+          // this.role = role;
+          this.loading = false;
+        });
       }
-      this.loading = false;
     })
   }
 

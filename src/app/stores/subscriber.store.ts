@@ -127,6 +127,7 @@ export class Subscriber {
   update(ref: AngularFirestoreCollection, item: any, callback) {
     this.process = true;
     ref.doc(item.key).update(item).then(() => {
+      this.process = false;
       callback(true, item)
     }).catch(error => {
       this.process = false;
@@ -138,6 +139,7 @@ export class Subscriber {
   delete(ref: AngularFirestoreCollection, item: any, callback) {
     this.process = true;
     ref.doc(item.key).delete().then(() => {
+      this.process = false;
       callback(true, item)
     }).catch(error => {
       this.process = false;

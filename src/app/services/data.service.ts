@@ -15,11 +15,11 @@ export class DataService {
   }
 
   userRef() {
-    return this.db.collection("users");
+    return this.db.collection("user");
   }
 
   userDocRef(key: string) {
-    return this.db.collection("users").doc<any>(key);
+    return this.db.collection("user").doc<any>(key);
   }
 
   environmentRef() {

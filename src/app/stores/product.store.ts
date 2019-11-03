@@ -40,6 +40,7 @@ export class Product {
   update(ref: AngularFirestoreCollection, item: any, callback) {
     this.process = true;
     ref.doc(item.key).update(item).then(() => {
+      this.process = false;
       callback(true, item)
     }).catch(error => {
       this.process = false;
@@ -51,6 +52,7 @@ export class Product {
   delete(item: IProduct, callback) {
     this.process = true;
     this.ds.productRef().doc(item.key).delete().then(() => {
+      this.process = false;
       callback(true, item)
     }).catch(error => {
       this.process = false;
