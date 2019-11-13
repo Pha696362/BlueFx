@@ -12,7 +12,8 @@ export const environment = {
   // storageBucket: "stock-app-60560.appspot.com",
   // messagingSenderId: "1078575680214",
   // appId: "1:1078575680214:web:a42b76afc4582f731c5777"
-  apiKey: "AIzaSyBRj5aI1-ofH6qVKZHKAWGdPqn7jdUUJeM",
+
+     apiKey: "AIzaSyBRj5aI1-ofH6qVKZHKAWGdPqn7jdUUJeM",
     authDomain: "bluefx-7ceca.firebaseapp.com",
     databaseURL: "https://bluefx-7ceca.firebaseio.com",
     projectId: "bluefx-7ceca",

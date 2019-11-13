@@ -51,7 +51,6 @@ export class EditCourseComponent implements OnInit {
     this.order = this.form.controls[' order'];
     this.description = this.form.controls['description']
     this.paymentType = this.form.controls['paymentType']
-
     this.category = this.form.controls['category']
   }
 

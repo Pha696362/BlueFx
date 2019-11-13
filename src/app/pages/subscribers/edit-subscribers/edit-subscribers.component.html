@@ -44,19 +44,19 @@
           <label>Email</label>
           <input type="email" class="lg-input" placeholder="someone@mail.com" formControlName="email">
         </div>
-        <!-- <div class="field">
-            <label>Package <span class="rq-sign">*</span>
+        <div class="field">
+            <label>Status
             </label>
-            <mat-select [compareWith]="compareObjects" formControlName="product">
-              <mat-option *ngFor="let item of products" [value]="item">
-                {{item.name}} - {{item.price|currency}} / {{item.period}} month{{item.period>1?'s':''}}
+            <mat-select [compareWith]="compareObjects" formControlName="disableaccount">
+              <mat-option *ngFor="let data of statusList" [value]="data">
+                {{data.text}}
               </mat-option>
             </mat-select>
-            <div *ngIf="form.controls['product'].hasError('required') && form.controls['product'].touched"
+            <div *ngIf="form.controls['disableaccount'].hasError('required') && form.controls['disableaccount'].touched"
               class="error-message">
               This field is required.
             </div>
-          </div> -->
+          </div>
       </div>
     </div>
 

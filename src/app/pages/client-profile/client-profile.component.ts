@@ -81,7 +81,8 @@ export class ClientProfileComponent implements OnInit {
   // }
 
   _goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/app/subscribers/']); 
+    // [routerLink]="['/app/course/' + item?.key]"
   }
 
   displayItem(item: any): string {

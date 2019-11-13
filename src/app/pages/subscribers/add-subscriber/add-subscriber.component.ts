@@ -1,4 +1,4 @@
-import { ConvertService, toDateExpiredDate } from './../../../services/convert.service';
+import { ConvertService, toNearExpiredDate } from './../../../services/convert.service';
 import { DataService } from 'src/app/services/data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Environment } from 'src/app/stores/environment.store';
@@ -42,7 +42,7 @@ export class AddSubscriberComponent implements OnInit {
       phone: [null, Validators.compose([Validators.required]), checkExistDoc(this.afs, "subscribers", "phoneNumber")],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-       product: [null,],
+      product: [null,],
       email: [null],
     })
     this.phone = this.form.controls['phone'];
@@ -68,8 +68,12 @@ export class AddSubscriberComponent implements OnInit {
     if (this.form.valid) {
       this.form.disable();
       const { phone, firstName, lastName, product, email, } = f;
-      const { period } = product;
-      const expiredDate = toDateExpiredDate(period);
+      const { day } = product;
+      const toExpiredDate = toNearExpiredDate(day);
+    // const expiredDate = toNearExpiredDate;
+      // const expiredDateKey = toNearExpiredDate(period);
+      // const expiredDate = toNearExpiredDate;
+
       const item: ISubscriber = {
         key: this.ds.createId(),
         status: StatusObj.ACTIVE,
@@ -86,13 +90,14 @@ export class AddSubscriberComponent implements OnInit {
         email: email,
         isPaid: false,
         product: null,
+        isRegister: true,
         expiredDate: null,
         expiredDateKey: null,
       }
       this.store.addNew(item, (success, error) => {
         if (success) {
           if (!isNew)
-            this.dialogRef.close();
+          this.dialogRef.close();
           this.snackBar.open('Membership has been created.', 'done', { duration: 2500 });
           this.form.enable();
           this.form.reset();

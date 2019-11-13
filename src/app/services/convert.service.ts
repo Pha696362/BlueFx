@@ -241,6 +241,9 @@ export class ConvertService {
 
   static addExpiredMonth(interval: number) {
     return moment().add(interval, 'months').toDate();
+  } 
+   static addExpiredDay(interval: number) {
+    return moment().add(interval, 'days').toDate();
   }
 
   // static getDaySchedule(days) {
@@ -370,11 +373,14 @@ export function toClassDate(date:Date){
 }
 
 
-export function toDateExpiredDate(period:any) {
-  return moment().add(period,'month').toDate()
-}
+// export function toDateExpiredDate(period:any) {
+//   return moment().add(period,'month').toDate()
+// }
 
 
-export function toNearExpiredDate() {
-  return moment().subtract(7,'day').toDate()
+export function toNearExpiredDate(days:number) {
+  return Number(moment().add(days,'day',).format('YYYYMMDD'))
 }
+// export function toNearExpiredDate() {
+//   return moment().add(7,'day',).format('YYYYMMDD')
+// }

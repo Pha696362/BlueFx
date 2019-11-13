@@ -43,7 +43,7 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    console.log(this.env.user)
+    // console.log(this.env.users)
   }
 
   create(f: any, isNew) {

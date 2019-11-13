@@ -202,7 +202,7 @@ export class Subscriber {
         const { price, period, discount } = product;
         const subscribeRef = this.ds.subscriberFireRef().doc(subscriber.key);
         const invoiceRef = this.ds.invoiceFireRef();
-        const expiredDate = ConvertService.addExpiredMonth(period);
+        const expiredDate = ConvertService.addExpiredDay(period);
         const dis_amount = (price * discount / 100);
         const amount = price - dis_amount;
 

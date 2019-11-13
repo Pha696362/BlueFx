@@ -30,7 +30,8 @@ export const tabs = {
     { path: '/app/packages/data', label: "Data" },
   ],
   subscriber: [
-    { path: '/app/subscribers/approval', label: "All Account" },
+
+    { path: '/app/subscribers/approval', label: "Normal Account" },
     { path: '/app/subscribers/membership', label: "Memberships" },
     { path: '/app/subscribers/near-expire', label: "Near Expire" },
     { path: '/app/subscribers/expired', label: "Expired" },

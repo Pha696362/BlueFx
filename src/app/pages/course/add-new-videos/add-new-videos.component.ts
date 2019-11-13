@@ -90,6 +90,8 @@ export class AddNewVideosComponent implements OnInit {
         update_date: new Date(),
         update_by: this.env.user,
       }
+      // console.log(item)
+
       this.store.addNew(this.ds.videocRef(),item, (success, error) => {
         if (success) {
           if (!isNew)

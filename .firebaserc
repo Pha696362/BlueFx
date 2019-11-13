@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "stock-app-60560",
-    "y": "bluefx-7ceca"
+    "y": "bluefx-7ceca",
+    "bluefx": "bluefx-7ceca"
   }
 }

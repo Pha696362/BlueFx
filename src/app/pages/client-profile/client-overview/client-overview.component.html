@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="m-p">
-        <span class="label">{{store?.subscriber?.product?.period}} Month<span
+        <span class="label">{{store?.subscriber?.product?.period}} Day<span
             *ngIf="store?.subscriber?.product?.period>1">s</span></span>
       </div>
     </div>
@@ -78,7 +78,7 @@
               <span *ngIf="state?.discount === 0">No Discount</span>
             </div>
             <div class="tag-list">
-              <span>Period: {{state?.period}} Month<span *ngIf="state?.period > 1">s</span></span>
+              <span>Period: {{state?.period}} Day<span *ngIf="state?.period > 1">s</span></span>
             </div>
           </div>
         </div>

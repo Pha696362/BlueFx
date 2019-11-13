@@ -54,6 +54,8 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    // console.log(this.env.users);
+
   }
 
   create(f: any, isNew) {
@@ -74,6 +76,7 @@ export class AddProductComponent implements OnInit {
         discount:ConvertService.toNumber(discount),
         note:note
       }
+      // console.log(item);
       this.store.addNew(item, (success, error) => {
         if (success) {
           if (!isNew)

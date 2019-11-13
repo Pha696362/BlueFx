@@ -13,7 +13,7 @@
                   <div class="i-cart" *ngFor="let data of store?.receipts">
                     <div class="i-left">
                       <h2 class="t-title"> Invoice No: {{ data?.invoice_no }}</h2>
-                      <p>{{data?.product?.name}} - {{data?.product?.period}} Month
+                      <p>{{data?.product?.name}} - {{data?.product?.period}} Day
                         <!-- <span *ngIf="data?.product?.period>0">s</span> -->
                       </p>
                         <p>Receive By: {{ data?.received_by?.name}}</p>

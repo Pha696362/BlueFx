@@ -28,9 +28,13 @@ export interface ISubscriber{
   phoneNumber?:string;
   email?:string;
   isPaid?:boolean;
+  isRegister?:any;
   product?:any;
   active_by?:any;
   active_date?:Date;
   expiredDate?:Date;
   expiredDateKey?:number;
+  disableaccount?:any;
+  
+
 }

@@ -1,4 +1,4 @@
-import { ConvertService, toDateExpiredDate } from './../../../services/convert.service';
+import { ConvertService, toNearExpiredDate } from './../../../services/convert.service';
 import { DataService } from 'src/app/services/data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Environment } from 'src/app/stores/environment.store';
@@ -8,8 +8,9 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import { checkExistDoc } from 'src/app/services/fire-validators.service';
 import { IProduct, ISubscriber } from 'src/app/interfaces/subscriber';
-import { StatusObj } from 'src/app/dummy/status';
+import { StatusArray } from 'src/app/dummy/status';
 import { Subscriber } from 'src/app/stores/subscriber.store';
+import { status } from '../../../dummy/status';
 
 @Component({
   selector: 'app-edit-subscribers',
@@ -24,7 +25,9 @@ export class EditSubscribersComponent implements OnInit {
   firstName: AbstractControl;
   lastName: AbstractControl;
   product: AbstractControl;
-
+  disableaccount:AbstractControl;
+  statusList=StatusArray;
+  
   products: any;
   constructor(
     public dialogRef: MatDialogRef<EditSubscribersComponent>,
@@ -40,15 +43,15 @@ export class EditSubscribersComponent implements OnInit {
   async buildForm() {
     this.form = this.fb.group({
       // phone: [null, Validators.compose([]), checkExistDoc(this.afs, "subscribers", "phoneNumber")],
-      firstName: [this.data.firstName, Validators.required],
-      lastName: [this.data.lastName, Validators.required],
-      // product: [null,],
+      firstName: [this.data.firstName],
+      lastName: [this.data.lastName],
+      disableaccount: [this.data.disableaccount],
       email: [this.data.email],
     })
     // this.phone = this.form.controls['phone'];
     this.firstName = this.form.controls["period"];
     this.lastName = this.form.controls["lastName"];
-    // this.product = this.form.controls["product"];
+    this.disableaccount = this.form.controls["disableaccount"];
     this.email = this.form.controls["email"];
     // this.products = await this.store.fetchPackage();
     // this.product.patchValue(this.products[0])
@@ -57,6 +60,8 @@ export class EditSubscribersComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    // console.log(this.data)
+    this.disableaccount.patchValue(this.statusList[0]);
   }
 
   compareObjects(o1: any, o2: any): boolean {
@@ -67,7 +72,8 @@ export class EditSubscribersComponent implements OnInit {
   create(f: any) {
     if (this.form.valid) {
       this.form.disable();
-      const { firstName, lastName, email, } = f;
+      const { firstName, lastName, email, disableaccount} = f;
+      // const statusTypeKey=statusType.map(m=>(m.key));
       const item: ISubscriber = {
         key: this.data.key,
         update_date: new Date(),
@@ -76,6 +82,7 @@ export class EditSubscribersComponent implements OnInit {
         lastName: lastName.toUpperCase(),
         fullName: `${lastName.toUpperCase()} ${firstName.toUpperCase()}`,
         email: email,
+        disableaccount:disableaccount,
       }
       this.store.update(this.ds.subscriberRef(), item, (success, error) => {
         if (success) {

@@ -24,6 +24,8 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.store.fetchData(this.ds.contactRef());
+    // this.store.fetchData(this.ds.subscriber1Ref());
+
   }
 
   create() {

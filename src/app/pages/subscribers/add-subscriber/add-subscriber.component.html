@@ -49,7 +49,7 @@
             </label>
             <mat-select [compareWith]="compareObjects" formControlName="product">
               <mat-option *ngFor="let item of products" [value]="item">
-                {{item.name}} - {{item.price|currency}} / {{item.period}} month{{item.period>1?'s':''}}
+                {{item.name}} - {{item.price|currency}} / {{item.period}} day{{item.period>1?'s':''}}
               </mat-option>
             </mat-select>
             <div *ngIf="form.controls['product'].hasError('required') && form.controls['product'].touched"

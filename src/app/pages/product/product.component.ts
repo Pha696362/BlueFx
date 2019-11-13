@@ -67,7 +67,7 @@ export class ProductComponent implements OnInit {
       if (result === 'yes') {
         this.store.delete(item, (success, error) => {
           if (success) {
-            this.snackBar.open('Genre has been deleted.', 'done', { duration: 2000 });
+            this.snackBar.open('Product has been deleted.', 'done', { duration: 2000 });
           }
           else {
             this.snackBar.open(error, 'Error')

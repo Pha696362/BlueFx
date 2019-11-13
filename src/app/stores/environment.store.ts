@@ -59,10 +59,10 @@ export class Environment {
     this.loading = true;
     this.ds.userRef().doc<any>(key).valueChanges().subscribe(doc => {
       if (doc) {
-        // const { role, province } = doc;
+         const { role, province } = doc;
         this.user = doc;
-        // this.province = province;
-        // this.role = role;
+        this.province = province;
+       this.role = role;
       }
       this.loading = false;
     });

@@ -57,6 +57,8 @@ export class DataService {
     return this.db.collection("videos", ref => ref.where('course.key', '==', coursekey));
   }
 
+
+
   videocRef() {
     return this.db.collection("videos");
   }
@@ -94,7 +96,8 @@ export class DataService {
           .where("isPaid", "==", false)
           .where("product.period", ">", 0)
           .orderBy("product.period")
-          .orderBy("page_key"));
+          .orderBy("page_key")
+          );
       case 'pending':
         return this.db.collection<ISubscriber>("subscribers", ref => ref
           .where("status.key", "==", 2)
@@ -113,10 +116,12 @@ export class DataService {
           .orderBy("expiredDateKey")
           .orderBy("page_key"));
       case 'near-expire':
-        const nearExpiredDateKey = ConvertService.toDateKey(toNearExpiredDate())
+        const nearExpiredDateKey =toNearExpiredDate(7)
+        // const nearExpiredDateKey =toNearExpiredDate
         return this.db.collection<ISubscriber>("subscribers", ref => ref
           .where("isPaid", "==", true)
-          .where("expiredDateKey", "<", nearExpiredDateKey)
+          .where("expiredDateKey", "<=", nearExpiredDateKey)
+          .where("expiredDateKey", ">=", ConvertService.toDateKey(new Date()))
           .orderBy("expiredDateKey")
           .orderBy("page_key"));
       case 'approval':
@@ -149,6 +154,11 @@ export class DataService {
   subscriberRef() {
     return this.db.collection<ISubscriber>("subscribers", ref => ref.orderBy("page_key"));
   }
+
+  // subscriber1Ref() {
+  //   return this.db.collection<ISubscriber>("subscribers", ref => ref.orderBy("fullName"));
+  // }
+
 
   subscriberSearchRef(field) {
     return this.db.collection("subscribers", ref => ref.orderBy(field, "desc")

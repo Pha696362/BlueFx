@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IVideos } from 'src/app/interfaces/bookstore';
 import { tabs } from 'src/app/dummy/tabs';
@@ -20,8 +20,9 @@ export class CourseDetailComponent implements OnInit {
   tabs = tabs.course;
    id;
 
-   course: any = null;
+  course: any = null;
   constructor(
+    private router: Router,
     public store: Bookstore,
     private snackBar: MatSnackBar,
     private ds: DataService,
@@ -80,5 +81,9 @@ export class CourseDetailComponent implements OnInit {
         })
       }
     });
+  }
+  _goBack() {
+    this.router.navigate(['/app/course/']); 
+    // [routerLink]="['/app/course/' + item?.key]"
   }
 }

@@ -3,6 +3,12 @@ export const StatusObj = {
   ACTIVE: { key: 1, text: "Active" },
 };
 
+export const StatusArray = [
+  { key: 1, text: "Active" },
+  { key: 2, text: "Disabled" },
+];
+
+
 export const BOOK_OPTIONS = [
   { key: 2, text: "Top Rating", route: "RATING" },
   { key: 3, text: "New Arrival", route: "NEW_ARRIVAL" },
